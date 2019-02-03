@@ -14,7 +14,7 @@ public class LibraryTest {
         //given
         Library library = new Library();
         library.setListOfBooks(new LinkedList<Book>());
-        Book book = new Book();
+        Book book = new PaperBookBuilder().title("W pustynie i w puszczy").build();
         book.setTitle("Mistrz i Małgorzata");
         //when
         library.addBook(book);
@@ -28,7 +28,7 @@ public class LibraryTest {
         //given
         Library library = new Library();
 
-        Book book = new Book();
+        Book book = new PaperBookBuilder().title("Mistrz i Małgorzata").build();
         book.setTitle("Mistrz i Małgorzata");
         //when
         library.addBook(book);
