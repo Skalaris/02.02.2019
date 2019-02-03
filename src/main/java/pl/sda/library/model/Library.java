@@ -5,19 +5,19 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-public class Library {
+public class Library<T extends Book> {
 
-    private List<Book> listOfBooks;
+    private List<T> listOfBooks;
 
-    public List<Book> getListOfBooks() {//chcemy zeby geter zwrócił niemodyfikowalną listę
+    public List<T> getListOfBooks() {//chcemy zeby geter zwrócił niemodyfikowalną listę
         return Collections.unmodifiableList(listOfBooks);
     }
 
-    public void setListOfBooks(List<Book> listOfBooks) {
+    public void setListOfBooks(List<T> listOfBooks) {
         this.listOfBooks = new LinkedList<>(listOfBooks);
     }
 
-    public void addBook(Book book) {
+    public void addBook(T book) {
         if (listOfBooks == null) {
             listOfBooks = new LinkedList<>();
         }

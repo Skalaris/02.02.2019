@@ -1,9 +1,10 @@
 package pl.sda.library.model;
 
-public final class BookBuilder {
-    private String authorFirstName;
-    private String authorLastName;
-    private String title;
+public abstract class BookBuilder<BookClass extends Book> {
+    //string byłby błedem T to jest tylko sugestia
+    protected String authorFirstName;
+    protected String authorLastName;
+    protected String title;
 
     public BookBuilder authorFirstName(String authorFirstName){
         this.authorFirstName = authorFirstName;
@@ -18,16 +19,15 @@ public final class BookBuilder {
         this.title = title;
         return this;
     }
-    public Book build(){
 
-        Book book = new Book();
+    //public abstract BookBuilderClass getBookBuilderClass();
+
+    public abstract BookClass build();
+        /*Book book = new Book();
         Author author = new Author();
         author.setFirstName(authorFirstName);
         author.setLastName(authorLastName);
         book.setAuthor(author);
         book.setTitle(title);
-        return book;
-
-    }
-
+        return book;*/
 }
