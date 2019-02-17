@@ -2,9 +2,11 @@ package pl.sda.library.model;
 
 import java.util.Objects;
 
-public class AudioBook extends Book {
+public class AudioBook extends Book implements DigitalMultimadia {
 
-    AudioBook(){
+    private int duration;
+
+    AudioBook() {
 
     }
 
@@ -39,5 +41,16 @@ public class AudioBook extends Book {
                 ", author=" + author +
                 ", title='" + title + '\'' +
                 '}';
+    }
+
+    @Override
+    public int getDuration() {
+        return duration;
+    }
+
+    @Override
+    public void setDuration(int duration) {
+        this.duration=duration;
+
     }
 }

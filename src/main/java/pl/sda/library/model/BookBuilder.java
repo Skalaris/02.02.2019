@@ -24,7 +24,7 @@ public abstract class BookBuilder<BookClass extends Book> {
 
     public abstract BookClass build();
         /*Book book = new Book();
-        Author author = new Author();
+        Creator author = new Creator();
         author.setFirstName(authorFirstName);
         author.setLastName(authorLastName);
         book.setAuthor(author);

@@ -5,23 +5,23 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-public class Library<T extends Book> {
+public class Library<T extends Multimedia> {
 
-    private List<T> listOfBooks;
+    private List<T> media;
 
-    public List<T> getListOfBooks() {//chcemy zeby geter zwrócił niemodyfikowalną listę
-        return Collections.unmodifiableList(listOfBooks);
+    public List<T> getMedia() {//chcemy zeby geter zwrócił niemodyfikowalną listę
+        return Collections.unmodifiableList(media);
     }
 
-    public void setListOfBooks(List<T> listOfBooks) {
-        this.listOfBooks = new LinkedList<>(listOfBooks);
+    public void setMedia(List<T> media) {
+        this.media = new LinkedList<>(media);
     }
 
-    public void addBook(T book) {
-        if (listOfBooks == null) {
-            listOfBooks = new LinkedList<>();
+    public void addMedia(T book) {
+        if (media == null) {
+            media = new LinkedList<>();
         }
-        listOfBooks.add(book);
+        media.add(book);
     }
 
     @Override
@@ -29,18 +29,18 @@ public class Library<T extends Book> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Library library = (Library) o;
-        return Objects.equals(listOfBooks, library.listOfBooks);
+        return Objects.equals(media, library.media);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(listOfBooks);
+        return Objects.hash(media);
     }
 
     @Override
     public String toString() {
         return "Library{" +
-                "listOfBooks=" + listOfBooks +
+                "media=" + media +
                 '}';
     }
 }
