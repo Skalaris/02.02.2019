@@ -2,13 +2,15 @@ package pl.sda.library.model;
 
 import java.util.Objects;
 
-public class PaperBook extends Book {
+public class PaperBook extends Book implements PaperMedium {
+    //public class PaperBook extends Book implements PaperMedium
 
     PaperBook(){
 
     }
 
     private CoverKind coverKind;
+    private int pageCount;
 
     public CoverKind getCoverKind() {
         return coverKind;
@@ -42,5 +44,16 @@ public class PaperBook extends Book {
                 ", title='" + title + '\'' +
                 ", coverKind='" + coverKind.getName() + '\'' +
                 '}';
+    }
+
+    @Override
+    public int getPageCount() {
+        return pageCount;
+    }
+
+    @Override
+    public void setPageCount(int pageCount) {
+        this.pageCount=pageCount;
+
     }
 }
