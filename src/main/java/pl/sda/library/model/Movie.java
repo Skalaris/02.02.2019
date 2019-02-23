@@ -20,6 +20,15 @@ public class Movie extends Multimedia implements DigitalMultimadia {
     }
 
     @Override
+    public String toString() {
+        return "Movie{" +
+                "director=" + director +
+                ", duration=" + duration +
+                ", title='" + title + '\'' +
+                '}';
+    }
+
+    @Override
     public void setDuration(int duration) {
         this.duration = duration;
     }

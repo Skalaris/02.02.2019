@@ -1,21 +1,49 @@
 package pl.sda.library;
+
+import pl.sda.library.command.Command;
+import pl.sda.library.command.DisplayMultimediaCommand;
+import pl.sda.library.command.FilterByTypeCommand;
 import pl.sda.library.model.*;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+
+        Library<Multimedia> library = createLibrary();
+        Scanner scanner = new Scanner(System.in);
+        Map<String, Command> commands = new HashMap<>();
+        commands.put("exit", () -> System.exit(0));
+        commands.put("display", new DisplayMultimediaCommand(library, System.out));
+        commands.put("filter", new FilterByTypeCommand(library, System.out));
+        while (true) {
+            System.out.println("Podaj komendę: ");
+            String commandName = scanner.nextLine();
+            Command command = commands.get(commandName);
+            Optional.ofNullable(command).ifPresent(Command::execute);
+        }
+        //library.getMedia().forEach(System.out::println);
+    }
+
+    private static Library<Multimedia> createLibrary() {
         Library<Multimedia> library = new Library<>();
-        //Library<AudioBook> library1 = new Library<>();
         library.addMedia(new PaperBookBuilder().
                 authorFirstName("Carrol").
                 authorLastName("Lewis")
                 .title("Lew,czarownica i stara szafa")
                 .cover(CoverKind.HARD)
+                .pageCount(269)
                 .build());
         library.addMedia(new PaperBookBuilder().
                 authorFirstName("Michaił").
                 authorLastName("Bułhakov")
                 .title("Mistrz i Małgorzata")
                 .cover(CoverKind.HARD)
+                .pageCount(364)
                 .build());
         library.addMedia(new PaperBookBuilder().
                 authorFirstName("Aghata").
@@ -98,14 +126,6 @@ public class Main {
                 .directorLastName("Name")
                 .duration(100)
                 .build());
-
-        library.getMedia().forEach(System.out::println);
-
-
-        /*for(Multimedia book: library.getMedia()){
-            System.out.println(book);*/
-
-
-
+        return library;
     }
 }
