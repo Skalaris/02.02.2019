@@ -4,12 +4,12 @@ import java.util.Objects;
 
 public class AudioBook extends Book implements DigitalMultimadia {
 
-    private int duration;
+
 
     AudioBook() {
 
     }
-
+    private int duration;
     private Format format;
 
     public Format getFormat() {
