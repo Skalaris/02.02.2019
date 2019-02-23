@@ -42,6 +42,7 @@ public class PaperBookBuilder {
         author.setLastName(authorLastName);
         book.setAuthor(author);
         book.setTitle(title);
+        book.setPageCount(pageCount);
         Optional<CoverKind> coverKindOptional = Optional.ofNullable(this.coverKind);
         book.setCoverKind(coverKindOptional.orElse(CoverKind.SOFT));
         /*if(coverKind!=null){

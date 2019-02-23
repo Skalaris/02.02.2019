@@ -1,6 +1,7 @@
 package pl.sda.library.model;
 
 import java.util.Objects;
+import java.util.stream.Stream;
 
 public abstract class  Multimedia {
 
@@ -17,6 +18,10 @@ public abstract class  Multimedia {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getType(){
+        return getClass().getSimpleName();
     }
 
     @Override

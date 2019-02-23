@@ -8,7 +8,6 @@ class Creator {
     private String lastName;
 
     Creator(){
-
     }
 
     public String getFirstName() {

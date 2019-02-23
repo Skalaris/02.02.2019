@@ -3,7 +3,6 @@ package pl.sda.library.command;
 import pl.sda.library.model.Library;
 import pl.sda.library.model.Multimedia;
 
-import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -13,9 +12,8 @@ public class FilterByTypeCommand implements Command {
 
     private final PrintStream printStream;
 
-    public FilterByTypeCommand(Library<Multimedia> library,  PrintStream printStream) {
+    public FilterByTypeCommand(Library<Multimedia> library, PrintStream printStream) {
         this.library = library;
-
         this.printStream = printStream;
     }
 
@@ -25,12 +23,20 @@ public class FilterByTypeCommand implements Command {
         Scanner scanner = new Scanner(System.in);
         printStream.println("Type:");
         String type = scanner.nextLine();
-        for (Multimedia multimedia :library.getMedia() ) {
-            if(multimedia.getClass().getSimpleName().equals(type)){
-                printStream.println(multimedia);
-            }
+        library.getMedia().stream()
+                .filter(multimedia -> multimedia.getType().equals(type))
+                .forEach(printStream::println);
 
-        }
+        /*for (Multimedia multimedia : library.getMedia()) {
+            if (multimedia.getClass().getSimpleName().equals(type)) {
+                printStream.println(multimedia);
+            }*/
 
     }
+
+        /*Stream<Multimedia> stream = library.getMedia().stream().parallel().sequential();
+        Stream<Multimedia> multimediaStream = library.getMedia().parallelStream();
+*/
+
 }
+
