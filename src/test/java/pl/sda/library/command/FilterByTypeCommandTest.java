@@ -3,16 +3,12 @@ package pl.sda.library.command;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.stubbing.Answer;
 import pl.sda.library.model.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.nio.CharBuffer;
-import java.util.Objects;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class FilterByTypeCommandTest {
@@ -37,7 +33,7 @@ public class FilterByTypeCommandTest {
                 .authorFirstName("Henryk")
                 .authorLastName("Sienkiewicz")
                 .title("W pustyni i w puszczy")
-                .cover(CoverKind.HARD)
+                .cover(Cover.HARD)
                 .pageCount(300)
                 .build();
 

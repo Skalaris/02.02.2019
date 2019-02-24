@@ -7,7 +7,7 @@ public class PaperBookBuilder {
     private String authorFirstName;
     private String authorLastName;
     private String title;
-    private CoverKind coverKind;
+    private Cover cover;
     private int pageCount;
 
     public PaperBookBuilder authorFirstName(String authorFirstName) {
@@ -25,8 +25,8 @@ public class PaperBookBuilder {
         return this;
     }
 
-    public PaperBookBuilder cover(CoverKind coverKind) {
-        this.coverKind = coverKind;
+    public PaperBookBuilder cover(Cover cover) {
+        this.cover = cover;
         return this;
     }
 
@@ -43,14 +43,14 @@ public class PaperBookBuilder {
         book.setAuthor(author);
         book.setTitle(title);
         book.setPageCount(pageCount);
-        Optional<CoverKind> coverKindOptional = Optional.ofNullable(this.coverKind);
-        book.setCoverKind(coverKindOptional.orElse(CoverKind.SOFT));
-        /*if(coverKind!=null){
-            book.setCoverKind(coverKind);
+        Optional<Cover> coverKindOptional = Optional.ofNullable(this.cover);
+        book.setCover(coverKindOptional.orElse(Cover.SOFT));
+        /*if(cover!=null){
+            book.setCover(cover);
         }else {
-            book.setCoverKind(CoverKind.HARD);
+            book.setCover(Cover.HARD);
         }*/
-        //book.setCoverKind(coverKind);
+        //book.setCover(cover);
         return book;
     }
 

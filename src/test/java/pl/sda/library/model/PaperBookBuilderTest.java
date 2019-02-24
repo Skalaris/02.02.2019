@@ -11,14 +11,14 @@ public class PaperBookBuilderTest {
         String authorFirstName = "Henryk";
         String authorLastName = "Sienkiewicz";
         String title = "W pustyni i w puszczy";
-        CoverKind coverKind = CoverKind.SOFT;
+        Cover cover = Cover.SOFT;
         int pageCount =100;
         // when
         PaperBook book = new PaperBookBuilder()//
                 .authorFirstName(authorFirstName)//
                 .authorLastName(authorLastName)//
                 .title(title)//
-                .cover(coverKind)//
+                .cover(cover)//
                 .pageCount(pageCount)
                 .build();
         // then
@@ -27,7 +27,7 @@ public class PaperBookBuilderTest {
         assertEquals(authorFirstName, book.getAuthor().getFirstName());
         assertEquals(authorLastName, book.getAuthor().getLastName());
         assertEquals(title, book.getTitle());
-        assertEquals(coverKind, book.getCoverKind());
+        assertEquals(cover, book.getCover());
         assertEquals(pageCount, book.getPageCount());
     }
 
