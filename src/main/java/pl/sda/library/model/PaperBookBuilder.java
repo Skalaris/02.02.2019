@@ -45,6 +45,7 @@ public class PaperBookBuilder {
         book.setPageCount(pageCount);
         Optional<Cover> coverKindOptional = Optional.ofNullable(this.cover);
         book.setCover(coverKindOptional.orElse(Cover.SOFT));
+        book.setState(new ReturnedState());
         /*if(cover!=null){
             book.setCover(cover);
         }else {

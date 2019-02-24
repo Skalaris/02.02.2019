@@ -7,6 +7,8 @@ public abstract class  Multimedia {
 
     protected String title;
 
+    protected MultimediaState state;
+
 
     public Multimedia() {
 
@@ -24,10 +26,20 @@ public abstract class  Multimedia {
         return getClass().getSimpleName();
     }
 
+
+    public MultimediaState getState() {
+        return state;
+    }
+
+    public void setState(MultimediaState state) {
+        this.state = state;
+    }
+
     @Override
     public String toString() {
         return "Multimedia{" +
                 "title='" + title + '\'' +
+                ", state=" + state +
                 '}';
     }
 
@@ -36,12 +48,13 @@ public abstract class  Multimedia {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Multimedia that = (Multimedia) o;
-        return Objects.equals(title, that.title);
+        return Objects.equals(title, that.title) &&
+                Objects.equals(state, that.state);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title);
+        return Objects.hash(title, state);
     }
 }
 

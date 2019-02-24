@@ -37,9 +37,11 @@ public class AudioBook extends Book implements DigitalMultimadia {
     @Override
     public String toString() {
         return "AudioBook{" +
-                "format=" + format +
+                "duration=" + duration +
+                ", format=" + format +
                 ", author=" + author +
                 ", title='" + title + '\'' +
+                ", state=" + state +
                 '}';
     }
 

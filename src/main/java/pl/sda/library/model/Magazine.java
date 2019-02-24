@@ -50,6 +50,7 @@ public class Magazine extends Multimedia implements PaperMedium {
                 "number=" + number +
                 ", pageCount=" + pageCount +
                 ", title='" + title + '\'' +
+                ", state=" + state +
                 '}';
     }
 }

@@ -46,6 +46,7 @@ public class AudioBookBuilder {
         Optional<Format>formatOptional=Optional.ofNullable(this.format);
         book.setFormat(formatOptional.orElse(Format.MP3));
         book.setDuration(duration);
+        book.setState(new ReturnedState());
         return book;
         /*if(format!=null){
             book.setFormat(format);

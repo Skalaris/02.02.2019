@@ -25,6 +25,7 @@ public class Movie extends Multimedia implements DigitalMultimadia {
                 "director=" + director +
                 ", duration=" + duration +
                 ", title='" + title + '\'' +
+                ", state=" + state +
                 '}';
     }
 

@@ -40,7 +40,7 @@ public class CreateMultimediaCommandTest {
                 .authorFirstName("Neil")
                 .authorLastName("Geaiman")
                 .format(Format.MP3)
-                .duration(110)
+                .duration(100)
                 .build();
         //then
         Library<Multimedia> expectedLibrary = new Library<>();
@@ -68,6 +68,7 @@ public class CreateMultimediaCommandTest {
                 .authorFirstName("Neil")
                 .authorLastName("Geaiman")
                 .cover(Cover.HARD)
+                .pageCount(130)
                 .build();
         //then
         Library<Multimedia> expectedLibrary = new Library<>();

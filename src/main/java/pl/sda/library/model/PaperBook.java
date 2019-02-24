@@ -50,6 +50,7 @@ public class PaperBook extends Book implements PaperMedium {
                 ", pageCount=" + pageCount +
                 ", author=" + author +
                 ", title='" + title + '\'' +
+                ", state=" + state +
                 '}';
     }
 }
