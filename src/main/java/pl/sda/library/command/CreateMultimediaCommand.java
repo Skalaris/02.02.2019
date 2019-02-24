@@ -1,16 +1,19 @@
 package pl.sda.library.command;
-
 import pl.sda.library.model.*;
-
 import java.io.PrintStream;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class CreateMultimediaCommand implements Command{
 
-    public static final String AUDIO_BOOK = "AudioBook";
     private final Library<Multimedia> library;
     private final PrintStream printStream;
+    private final List<CreateMultimediaStrategy>strategies= Arrays.asList(
+            new CreateAudioBookCommandStrategy(),new CreatePaperBookCommandStrategy(),
+            new CreateMagazineCommandStrategy(),new CreateMovieCommandStrategy());
+
 
     public CreateMultimediaCommand(Library<Multimedia> library, PrintStream printStream) {
         this.library = library;
@@ -20,27 +23,11 @@ public class CreateMultimediaCommand implements Command{
         Scanner scanner = new Scanner(System.in);
         printStream.println("Typ:");
         String type = scanner.nextLine();
-        if(type.equals(AUDIO_BOOK)){
-            printStream.println("Tytuł:");
-            String title= scanner.nextLine();
-            printStream.println("Imię autora:");
-            String authorFirstName = scanner.nextLine();
-            printStream.println("Nazwisko autora:");
-            String authorLastName = scanner.nextLine();
-            printStream.println("Format:");
-            String format = scanner.nextLine();
-            printStream.println("Czas trwania:");
-            int duration  = scanner.nextInt();
-            scanner.nextLine();
-            AudioBook audioBook = new AudioBookBuilder()
-                    .title(title)
-                    .authorFirstName(authorFirstName)
-                    .authorLastName(authorLastName)
-                    .format(Format.valueOf(format))
-                    .duration(duration)
-                    .build();
-            library.addMedia(audioBook);
+        Optional<Multimedia> multimedia = strategies.stream()
+                .filter(s-> s.isTypeCorrect(type))
+                .findFirst()
+                .map(s->s.createMultimedia(scanner,printStream));
+        multimedia.ifPresent(m -> library.addMedia(m));
 
-        }
     }
 }

@@ -1,21 +1,18 @@
 package pl.sda.library.command;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pl.sda.library.model.*;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
-
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class CreateMultimediaCommandTest {
     public static final String TEST_AUDIO_BOOK_INPUT = "AudioBook\nChłopaki Anansiego\nNeil\nGeaiman\nMP3\n100\n";
     public static final String TEST_PAPER_BOOK_INPUT = "PaperBook\nChłopaki Anansiego\nNeil\nGeaiman\nHARD\n130\n";
-    public static final String TEST_MOVIE_INPUT = "Movie\nPrzed wschodem Słońca\nJuly\nDelphy\n120\n";
+    public static final String TEST_MOVIE_INPUT = "Movie\nPrzed wschodem słońca\nJuly\nDelphy\n120\n";
     public static final String TEST_MAGAZINE_INPUT = "Magazine\nProgramista\n10\n90\n";
     private InputStream inputStream;
 
@@ -36,7 +33,6 @@ public class CreateMultimediaCommandTest {
         Library<Multimedia> library = new Library<>();
         PrintStream printStreamMock = mock(PrintStream.class);
         Command command = new CreateMultimediaCommand(library, printStreamMock);
-
         //when
         command.execute();
         AudioBook audioBook = new AudioBookBuilder()
@@ -46,7 +42,6 @@ public class CreateMultimediaCommandTest {
                 .format(Format.MP3)
                 .duration(110)
                 .build();
-
         //then
         Library<Multimedia> expectedLibrary = new Library<>();
         expectedLibrary.addMedia(audioBook);
@@ -72,7 +67,7 @@ public class CreateMultimediaCommandTest {
                 .title("Chłopaki Anansiego")
                 .authorFirstName("Neil")
                 .authorLastName("Geaiman")
-                .cover(CoverKind.HARD)
+                .cover(Cover.HARD)
                 .build();
         //then
         Library<Multimedia> expectedLibrary = new Library<>();
@@ -88,6 +83,7 @@ public class CreateMultimediaCommandTest {
 
     @Test
     public void shouldCreateMovieWhenMovieTypeWasTyped() {
+        //given
         System.setIn(new ByteArrayInputStream(TEST_MOVIE_INPUT.getBytes()));
         Library<Multimedia> library = new Library<>();
         PrintStream printStreamMock = mock(PrintStream.class);
@@ -108,7 +104,7 @@ public class CreateMultimediaCommandTest {
         verify(printStreamMock, times(1)).println("Tytuł:");
         verify(printStreamMock, times(1)).println("Imię reżysera:");
         verify(printStreamMock, times(1)).println("Nazwisko reżysera:");
-        verify(printStreamMock, times(1)).println("Duration:");
+        verify(printStreamMock, times(1)).println("Czas trwania:");
 
     }
 
@@ -132,6 +128,7 @@ public class CreateMultimediaCommandTest {
         assertEquals(expectedLibrary, library);
         verify(printStreamMock, times(1)).println("Typ:");
         verify(printStreamMock, times(1)).println("Tytuł:");
+        verify(printStreamMock, times(1)).println("Numer:");
         verify(printStreamMock, times(1)).println("Liczba stron:");
     }
 }

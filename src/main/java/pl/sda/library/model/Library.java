@@ -7,20 +7,21 @@ import java.util.Objects;
 
 public class Library<T extends Multimedia> {
 
-    private List<T> media;
+    private List<T> media = new LinkedList<>();
 
     public List<T> getMedia() {//chcemy zeby geter zwrócił niemodyfikowalną listę
         return Collections.unmodifiableList(media);
     }
 
     public void setMedia(List<T> media) {
+        assert media!=null;
         this.media = new LinkedList<>(media);
     }
 
     public void addMedia(T book) {
-        if (media == null) {
+        /*if (media == null) {
             media = new LinkedList<>();
-        }
+        }*/
         media.add(book);
     }
 

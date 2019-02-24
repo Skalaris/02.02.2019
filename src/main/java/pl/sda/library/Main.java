@@ -1,6 +1,7 @@
 package pl.sda.library;
 
 import pl.sda.library.command.Command;
+import pl.sda.library.command.CreateMultimediaCommand;
 import pl.sda.library.command.DisplayMultimediaCommand;
 import pl.sda.library.command.FilterByTypeCommand;
 import pl.sda.library.model.*;
@@ -20,6 +21,7 @@ public class Main {
         commands.put("exit", () -> System.exit(0));
         commands.put("display", new DisplayMultimediaCommand(library, System.out));
         commands.put("filter", new FilterByTypeCommand(library, System.out));
+        commands.put("create", new CreateMultimediaCommand(library,System.out));
         while (true) {
             System.out.println("Podaj komendę: ");
             String commandName = scanner.nextLine();
@@ -35,33 +37,33 @@ public class Main {
                 authorFirstName("Carrol").
                 authorLastName("Lewis")
                 .title("Lew,czarownica i stara szafa")
-                .cover(CoverKind.HARD)
+                .cover(Cover.HARD)
                 .pageCount(269)
                 .build());
         library.addMedia(new PaperBookBuilder().
                 authorFirstName("Michaił").
                 authorLastName("Bułhakov")
                 .title("Mistrz i Małgorzata")
-                .cover(CoverKind.HARD)
+                .cover(Cover.HARD)
                 .pageCount(364)
                 .build());
         library.addMedia(new PaperBookBuilder().
                 authorFirstName("Aghata").
                 authorLastName("Christie")
                 .title("I nie było już nikogo")
-                .cover(CoverKind.HARD)
+                .cover(Cover.HARD)
                 .build());
         library.addMedia(new PaperBookBuilder().
                 authorFirstName("Neil").
                 authorLastName("Geiman")
                 .title("Chłopaki Anansiego")
-                .cover(CoverKind.HARD)
+                .cover(Cover.HARD)
                 .build());
         library.addMedia(new PaperBookBuilder().
                 authorFirstName("Terry").
                 authorLastName("Prachett")
                 .title("Dobry Omen")
-                .cover(CoverKind.HARD)
+                .cover(Cover.HARD)
                 .build());
         library.addMedia(new AudioBookBuilder().
                 authorFirstName("Carrol").

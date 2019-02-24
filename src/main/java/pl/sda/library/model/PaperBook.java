@@ -6,14 +6,14 @@ public class PaperBook extends Book implements PaperMedium {
 
     PaperBook(){
     }
-    private CoverKind coverKind;
+    private Cover cover;
     private int pageCount;
 
-    public CoverKind getCoverKind() {
-        return coverKind;
+    public Cover getCover() {
+        return cover;
     }
-    public void setCoverKind(CoverKind coverKind) {
-        this.coverKind = coverKind;
+    public void setCover(Cover cover) {
+        this.cover = cover;
     }
 
     @Override
@@ -35,18 +35,18 @@ public class PaperBook extends Book implements PaperMedium {
         if (!super.equals(o))
             return false;
         PaperBook paperBook = (PaperBook) o;
-        return coverKind == paperBook.coverKind;
+        return cover == paperBook.cover;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), coverKind);
+        return Objects.hash(super.hashCode(), cover);
     }
 
     @Override
     public String toString() {
         return "PaperBook{" +
-                "coverKind=" + coverKind +
+                "cover=" + cover +
                 ", pageCount=" + pageCount +
                 ", author=" + author +
                 ", title='" + title + '\'' +

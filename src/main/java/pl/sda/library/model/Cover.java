@@ -1,12 +1,12 @@
 package pl.sda.library.model;
 
-public enum CoverKind {
+public enum Cover {
 
     SOFT("miękka"),HARD("twarda");
 
     private String name;
 
-    CoverKind(String name) {
+    Cover(String name) {
         this.name = name;
     }
 

@@ -1,7 +1,6 @@
 package pl.sda.library.command;
 
 import org.junit.Test;
-import org.mockito.Mockito;
 import pl.sda.library.model.*;
 
 import java.io.PrintStream;
@@ -20,7 +19,7 @@ public class DisplayMultimediaCommandTest {
                 .authorFirstName("Henryk")
                 .authorLastName("Sienkiewicz")
                 .title("W pustyni i w puszczy")
-                .cover(CoverKind.HARD)
+                .cover(Cover.HARD)
                 .pageCount(300)
                 .build();
 
